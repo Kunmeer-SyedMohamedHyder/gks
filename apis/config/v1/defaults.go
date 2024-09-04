@@ -251,10 +251,10 @@ func SetDefaults_SySchedArgs(obj *SySchedArgs) {
 	}
 }
 
-// SetDefaultGreenSchedulingArgs sets the default parameters for the GreenScheduling plugin
-func SetDefaultGreenSchedulingArgs(args *GreenSchedulingArgs) {
-	if args.Sample == nil {
+// SetDefaults_GreenSchedulingArgs sets the default parameters for the GreenScheduling plugin
+func SetDefaults_GreenSchedulingArgs(obj *GreenSchedulingArgs) {
+	if obj.Sample == nil {
 		defaultSample := "I am a sample"
-		args.Sample = &defaultSample
+		obj.Sample = &defaultSample
 	}
 }
