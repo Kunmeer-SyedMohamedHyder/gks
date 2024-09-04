@@ -250,3 +250,11 @@ func SetDefaults_SySchedArgs(obj *SySchedArgs) {
 		obj.DefaultProfileName = &DefaultSySchedProfileName
 	}
 }
+
+// SetDefaultGreenSchedulingArgs sets the default parameters for the GreenScheduling plugin
+func SetDefaultGreenSchedulingArgs(args *GreenSchedulingArgs) {
+	if args.Sample == nil {
+		defaultSample := "I am a sample"
+		args.Sample = &defaultSample
+	}
+}

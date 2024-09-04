@@ -277,3 +277,13 @@ type SySchedArgs struct {
 	// CR name of the default profile for all system calls
 	DefaultProfileName *string `json:"defaultProfileName,omitempty"`
 }
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// GreenSchedulingArgs holds arguments used to configure GreenScheduling plugin.
+type GreenSchedulingArgs struct {
+	metav1.TypeMeta `json:",inline"`
+
+	// Sample arg
+	Sample *string `json:"sample,omitempty"`
+}
