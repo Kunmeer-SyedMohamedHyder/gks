@@ -284,6 +284,33 @@ type SySchedArgs struct {
 type GreenSchedulingArgs struct {
 	metav1.TypeMeta `json:",inline"`
 
-	// Sample arg
-	Sample *string `json:"sample,omitempty"`
+	// URL for token retrieval (required)
+	TokenURL *string `json:"tokenUrl"`
+
+	// Client ID for authentication (required)
+	ClientID *string `json:"clientId"`
+
+	// Client Secret for authentication (required)
+	ClientSecret *string `json:"clientSecret"`
+
+	// Hostname for the SIC API (required)
+	SICHostname *string `json:"sicHostname"`
+
+	// Weight for CO2 decay in scoring (required)
+	CO2DecayWeight *float64 `json:"co2DecayWeight"`
+
+	// Weight for total CO2 in scoring (required)
+	TotalCO2Weight *float64 `json:"totalCO2Weight"`
+
+	// Weight for cost in scoring (required)
+	CostWeight *float64 `json:"costWeight"`
+
+	// Decay rate used for CO2 calculations (required)
+	DecayRate *float64 `json:"decayRate"`
+
+	// Time interval to consider (optional)
+	TimeSeriesInterval *string `json:"interval,omitempty"`
+
+	// Number of days to consider for calculations (optional)
+	ConsiderationDays *int `json:"considerationDays,omitempty"`
 }

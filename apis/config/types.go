@@ -286,6 +286,33 @@ type SySchedArgs struct {
 type GreenSchedulingArgs struct {
 	metav1.TypeMeta
 
-	// Address of the Prometheus Server
-	Sample string
+	// URL for token retrieval
+	TokenURL string
+
+	// Client ID for authentication
+	ClientID string
+
+	// Client Secret for authentication
+	ClientSecret string
+
+	// Hostname for the SIC API
+	SICHostname string
+
+	// Weight for CO2 decay in scoring
+	CO2DecayWeight float64
+
+	// Weight for total CO2 in scoring
+	TotalCO2Weight float64
+
+	// Weight for cost in scoring
+	CostWeight float64
+
+	// Decay rate used for CO2 calculations
+	DecayRate float64
+
+	// Time interval for time series calculations
+	TimeSeriesInterval string
+
+	// Number of days to consider for calculations
+	ConsiderationDays int
 }

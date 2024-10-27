@@ -102,6 +102,11 @@ var (
 	DefaultSySchedProfileNamespace = "default"
 	// DefaultSySchedProfileName is the name of the default syscall profile CR for SySched plugin
 	DefaultSySchedProfileName = "all-syscalls"
+
+	// DefaultTimeSeriesInterval is the default interval for the TimeSeries plugin
+	DefaultTimeSeriesInterval = "1 day"
+	// DefaultConsiderationDays is the default number of days for the TimeSeries plugin
+	DefaultConsiderationDays = 30
 )
 
 // SetDefaults_CoschedulingArgs sets the default parameters for Coscheduling plugin.
@@ -253,8 +258,13 @@ func SetDefaults_SySchedArgs(obj *SySchedArgs) {
 
 // SetDefaults_GreenSchedulingArgs sets the default parameters for the GreenScheduling plugin
 func SetDefaults_GreenSchedulingArgs(obj *GreenSchedulingArgs) {
-	if obj.Sample == nil {
-		defaultSample := "I am a sample"
-		obj.Sample = &defaultSample
+	// Set default value for TimeSeriesInterval if not provided
+	if obj.TimeSeriesInterval == nil {
+		obj.TimeSeriesInterval = &DefaultTimeSeriesInterval
+	}
+
+	// Set default value for ConsiderationDays if not provided
+	if obj.ConsiderationDays == nil {
+		obj.ConsiderationDays = &DefaultConsiderationDays
 	}
 }
