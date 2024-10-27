@@ -113,7 +113,7 @@ func (in *GreenSchedulingArgs) DeepCopyInto(out *GreenSchedulingArgs) {
 	}
 	if in.ConsiderationDays != nil {
 		in, out := &in.ConsiderationDays, &out.ConsiderationDays
-		*out = new(int)
+		*out = new(float64)
 		**out = **in
 	}
 	return
