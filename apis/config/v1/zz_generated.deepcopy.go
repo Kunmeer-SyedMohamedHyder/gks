@@ -66,9 +66,54 @@ func (in *CoschedulingArgs) DeepCopyObject() runtime.Object {
 func (in *GreenSchedulingArgs) DeepCopyInto(out *GreenSchedulingArgs) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
-	if in.Sample != nil {
-		in, out := &in.Sample, &out.Sample
+	if in.TokenURL != nil {
+		in, out := &in.TokenURL, &out.TokenURL
 		*out = new(string)
+		**out = **in
+	}
+	if in.ClientID != nil {
+		in, out := &in.ClientID, &out.ClientID
+		*out = new(string)
+		**out = **in
+	}
+	if in.ClientSecret != nil {
+		in, out := &in.ClientSecret, &out.ClientSecret
+		*out = new(string)
+		**out = **in
+	}
+	if in.SICHostname != nil {
+		in, out := &in.SICHostname, &out.SICHostname
+		*out = new(string)
+		**out = **in
+	}
+	if in.CO2DecayWeight != nil {
+		in, out := &in.CO2DecayWeight, &out.CO2DecayWeight
+		*out = new(float64)
+		**out = **in
+	}
+	if in.TotalCO2Weight != nil {
+		in, out := &in.TotalCO2Weight, &out.TotalCO2Weight
+		*out = new(float64)
+		**out = **in
+	}
+	if in.CostWeight != nil {
+		in, out := &in.CostWeight, &out.CostWeight
+		*out = new(float64)
+		**out = **in
+	}
+	if in.DecayRate != nil {
+		in, out := &in.DecayRate, &out.DecayRate
+		*out = new(float64)
+		**out = **in
+	}
+	if in.TimeSeriesInterval != nil {
+		in, out := &in.TimeSeriesInterval, &out.TimeSeriesInterval
+		*out = new(string)
+		**out = **in
+	}
+	if in.ConsiderationDays != nil {
+		in, out := &in.ConsiderationDays, &out.ConsiderationDays
+		*out = new(int)
 		**out = **in
 	}
 	return
