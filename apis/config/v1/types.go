@@ -312,5 +312,5 @@ type GreenSchedulingArgs struct {
 	TimeSeriesInterval *string `json:"interval,omitempty"`
 
 	// Number of days to consider for calculations (optional)
-	ConsiderationDays *int `json:"considerationDays,omitempty"`
+	ConsiderationDays *float64 `json:"considerationDays,omitempty"`
 }

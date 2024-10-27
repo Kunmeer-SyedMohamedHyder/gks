@@ -106,7 +106,7 @@ var (
 	// DefaultTimeSeriesInterval is the default interval for the TimeSeries plugin
 	DefaultTimeSeriesInterval = "1 day"
 	// DefaultConsiderationDays is the default number of days for the TimeSeries plugin
-	DefaultConsiderationDays = 30
+	DefaultConsiderationDays = 30.0
 )
 
 // SetDefaults_CoschedulingArgs sets the default parameters for Coscheduling plugin.

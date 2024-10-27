@@ -314,5 +314,5 @@ type GreenSchedulingArgs struct {
 	TimeSeriesInterval string
 
 	// Number of days to consider for calculations
-	ConsiderationDays int
+	ConsiderationDays float64
 }
