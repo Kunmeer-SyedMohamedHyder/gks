@@ -284,33 +284,33 @@ type SySchedArgs struct {
 type GreenSchedulingArgs struct {
 	metav1.TypeMeta `json:",inline"`
 
-	// URL for token retrieval (required)
+	// URL for token retrieval
 	TokenURL *string `json:"tokenUrl"`
 
-	// Client ID for authentication (required)
+	// Client ID for authentication
 	ClientID *string `json:"clientId"`
 
-	// Client Secret for authentication (required)
+	// Client Secret for authentication
 	ClientSecret *string `json:"clientSecret"`
 
-	// Hostname for the SIC API (required)
+	// Hostname for the SIC API
 	SICHostname *string `json:"sicHostname"`
 
-	// Weight for CO2 decay in scoring (required)
-	CO2DecayWeight *float64 `json:"co2DecayWeight"`
+	// Weight for CO2 decay in scoring
+	CO2DecayWeight *float64 `json:"co2DecayWeight,omitempty"`
 
-	// Weight for total CO2 in scoring (required)
-	TotalCO2Weight *float64 `json:"totalCO2Weight"`
+	// Weight for total CO2 in scoring
+	TotalCO2Weight *float64 `json:"totalCO2Weight,omitempty"`
 
-	// Weight for cost in scoring (required)
-	CostWeight *float64 `json:"costWeight"`
+	// Weight for cost in scoring
+	CostWeight *float64 `json:"costWeight,omitempty"`
 
-	// Decay rate used for CO2 calculations (required)
-	DecayRate *float64 `json:"decayRate"`
+	// Decay rate used for CO2 calculations
+	DecayRate *float64 `json:"decayRate,omitempty"`
 
-	// Time interval to consider (optional)
-	TimeSeriesInterval *string `json:"interval,omitempty"`
+	// Time interval for time series calculations
+	TimeSeriesInterval *string `json:"timeSeriesInterval,omitempty"`
 
-	// Number of days to consider for calculations (optional)
+	// Number of days to consider for calculations
 	ConsiderationDays *float64 `json:"considerationDays,omitempty"`
 }

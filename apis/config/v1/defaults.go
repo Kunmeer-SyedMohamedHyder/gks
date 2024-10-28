@@ -103,6 +103,15 @@ var (
 	// DefaultSySchedProfileName is the name of the default syscall profile CR for SySched plugin
 	DefaultSySchedProfileName = "all-syscalls"
 
+	// Defaults for GreenScheduling
+	// DefaultCO2DecayWeight is the default weight for CO2 decay in scoring
+	DefaultCO2DecayWeight = 1.0
+	// DefaultTotalCO2Weight is the default weight for total CO2 in scoring
+	DefaultTotalCO2Weight = 0.5
+	// DefaultCostWeight is the default weight for cost in scoring
+	DefaultCostWeight = 0.1
+	// DefaultDecayRate is the default rate used for CO2 calculations
+	DefaultDecayRate = 0.05
 	// DefaultTimeSeriesInterval is the default interval for the TimeSeries plugin
 	DefaultTimeSeriesInterval = "1 day"
 	// DefaultConsiderationDays is the default number of days for the TimeSeries plugin
@@ -258,6 +267,30 @@ func SetDefaults_SySchedArgs(obj *SySchedArgs) {
 
 // SetDefaults_GreenSchedulingArgs sets the default parameters for the GreenScheduling plugin
 func SetDefaults_GreenSchedulingArgs(obj *GreenSchedulingArgs) {
+	// Set default value for CO2DecayWeight if not provided
+	if obj.CO2DecayWeight == nil {
+		defaultCO2DecayWeight := DefaultCO2DecayWeight
+		obj.CO2DecayWeight = &defaultCO2DecayWeight
+	}
+
+	// Set default value for TotalCO2Weight if not provided
+	if obj.TotalCO2Weight == nil {
+		defaultTotalCO2Weight := DefaultTotalCO2Weight
+		obj.TotalCO2Weight = &defaultTotalCO2Weight
+	}
+
+	// Set default value for CostWeight if not provided
+	if obj.CostWeight == nil {
+		defaultCostWeight := DefaultCostWeight
+		obj.CostWeight = &defaultCostWeight
+	}
+
+	// Set default value for DecayRate if not provided
+	if obj.DecayRate == nil {
+		defaultDecayRate := DefaultDecayRate
+		obj.DecayRate = &defaultDecayRate
+	}
+
 	// Set default value for TimeSeriesInterval if not provided
 	if obj.TimeSeriesInterval == nil {
 		obj.TimeSeriesInterval = &DefaultTimeSeriesInterval
