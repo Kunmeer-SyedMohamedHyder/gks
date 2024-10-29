@@ -254,6 +254,9 @@ func autoConvert_v1_GreenSchedulingArgs_To_config_GreenSchedulingArgs(in *GreenS
 	if err := metav1.Convert_Pointer_float64_To_float64(&in.ConsiderationDays, &out.ConsiderationDays, s); err != nil {
 		return err
 	}
+	if err := metav1.Convert_Pointer_string_To_string(&in.SerialNumLabel, &out.SerialNumLabel, s); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -291,6 +294,9 @@ func autoConvert_config_GreenSchedulingArgs_To_v1_GreenSchedulingArgs(in *config
 		return err
 	}
 	if err := metav1.Convert_float64_To_Pointer_float64(&in.ConsiderationDays, &out.ConsiderationDays, s); err != nil {
+		return err
+	}
+	if err := metav1.Convert_string_To_Pointer_string(&in.SerialNumLabel, &out.SerialNumLabel, s); err != nil {
 		return err
 	}
 	return nil

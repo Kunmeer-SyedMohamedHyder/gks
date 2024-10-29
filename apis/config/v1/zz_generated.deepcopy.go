@@ -116,6 +116,11 @@ func (in *GreenSchedulingArgs) DeepCopyInto(out *GreenSchedulingArgs) {
 		*out = new(float64)
 		**out = **in
 	}
+	if in.SerialNumLabel != nil {
+		in, out := &in.SerialNumLabel, &out.SerialNumLabel
+		*out = new(string)
+		**out = **in
+	}
 	return
 }
 
