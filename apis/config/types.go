@@ -315,4 +315,7 @@ type GreenSchedulingArgs struct {
 
 	// Number of days to consider for calculations
 	ConsiderationDays float64
+
+	// Label key to identify the node serial number
+	SerialNumLabel string
 }

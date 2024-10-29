@@ -313,4 +313,7 @@ type GreenSchedulingArgs struct {
 
 	// Number of days to consider for calculations
 	ConsiderationDays *float64 `json:"considerationDays,omitempty"`
+
+	// Label key to identify node serial number
+	SerialNumLabel *string `json:"serialNumLabel"`
 }
