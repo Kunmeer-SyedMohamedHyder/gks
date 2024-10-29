@@ -1,4 +1,4 @@
-package response
+package sicresponse
 
 // UsageEntity represents a single entity in the usage response.
 type UsageEntity struct {
