@@ -10,18 +10,18 @@ type FilterKey string
 
 // FilterKeys defines the available filter keys.
 const (
-	EntityID        FilterKey = "entityId"
-	EntityMake      FilterKey = "entityMake"
-	EntityModel     FilterKey = "entityModel"
-	EntityType      FilterKey = "entityType"
-	EntitySerialNum FilterKey = "entitySerialNum"
-	EntityProductID FilterKey = "entityProductId"
-	LocationName    FilterKey = "locationName"
-	LocationID      FilterKey = "locationId"
-	LocationCity    FilterKey = "locationCity"
-	LocationState   FilterKey = "locationState"
-	LocationCountry FilterKey = "locationCountry"
-	Name            FilterKey = "name"
+	FilterKeyEntityID        FilterKey = "entityId"
+	FilterKeyEntityMake      FilterKey = "entityMake"
+	FilterKeyEntityModel     FilterKey = "entityModel"
+	FilterKeyEntityType      FilterKey = "entityType"
+	FilterKeyEntitySerialNum FilterKey = "entitySerialNum"
+	FilterKeyEntityProductID FilterKey = "entityProductId"
+	FilterKeyLocationName    FilterKey = "locationName"
+	FilterKeyLocationID      FilterKey = "locationId"
+	FilterKeyLocationCity    FilterKey = "locationCity"
+	FilterKeyLocationState   FilterKey = "locationState"
+	FilterKeyLocationCountry FilterKey = "locationCountry"
+	FilterKeyName            FilterKey = "name"
 )
 
 // FilterOperator is a custom type for defining valid filter operators.
@@ -29,9 +29,9 @@ type FilterOperator string
 
 // FilterOperators defines the available filter operators.
 const (
-	Equals   FilterOperator = "eq"
-	Contains FilterOperator = "contains"
-	In       FilterOperator = "in"
+	FilterOperatorEquals   FilterOperator = "eq"
+	FilterOperatorContains FilterOperator = "contains"
+	FilterOperatorIn       FilterOperator = "in"
 )
 
 // Filter represents a single filter condition.
@@ -55,9 +55,9 @@ func NewFilter(key FilterKey, operator FilterOperator, value interface{}) (*Filt
 // isValidKey checks if the filter key is valid.
 func isValidKey(key FilterKey) bool {
 	switch key {
-	case EntityID, EntityMake, EntityModel, EntityType, EntitySerialNum,
-		EntityProductID, LocationName, LocationID,
-		LocationCity, LocationState, LocationCountry, Name:
+	case FilterKeyEntityID, FilterKeyEntityMake, FilterKeyEntityModel, FilterKeyEntityType, FilterKeyEntitySerialNum,
+		FilterKeyEntityProductID, FilterKeyLocationName, FilterKeyLocationID,
+		FilterKeyLocationCity, FilterKeyLocationState, FilterKeyLocationCountry, FilterKeyName:
 		return true
 	}
 	return false
@@ -66,7 +66,7 @@ func isValidKey(key FilterKey) bool {
 // isValidOperator checks if the filter operator is valid.
 func isValidOperator(operator FilterOperator) bool {
 	switch operator {
-	case Equals, Contains, In:
+	case FilterOperatorEquals, FilterOperatorContains, FilterOperatorIn:
 		return true
 	}
 	return false
@@ -75,12 +75,12 @@ func isValidOperator(operator FilterOperator) bool {
 // GetValue returns the value representation of the Filter.
 // For example: "entityId eq 'value'" or "contains(entityMake, 'value')"
 func (f *Filter) GetValue() string {
-	if f.Operator == In {
+	if f.Operator == FilterOperatorIn {
 		// If the value is a slice, format it as a string
 		values := f.Value.([]string) // Assuming Value is a slice of strings for "in" operator
 		return fmt.Sprintf("%s in (%s)", f.Key, formatInValues(values))
 	}
-	if f.Operator == Contains {
+	if f.Operator == FilterOperatorContains {
 		return fmt.Sprintf("contains(%s, '%v')", f.Key, f.Value)
 	}
 	return fmt.Sprintf("%s %s '%v'", f.Key, f.Operator, f.Value)

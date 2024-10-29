@@ -16,7 +16,7 @@ type Params struct {
 }
 
 // NewParams creates a new Params instance.
-func NewParams() *Params {
+func New() *Params {
 	return &Params{
 		filters: []Filter{},
 		sorts:   []Sort{},
@@ -26,23 +26,27 @@ func NewParams() *Params {
 }
 
 // AddFilter adds a filter to the Params.
-func (p *Params) AddFilter(filter *Filter) {
+func (p *Params) AddFilter(filter *Filter) *Params {
 	p.filters = append(p.filters, *filter)
+	return p
 }
 
 // AddSort adds a sort condition to the Params.
-func (p *Params) AddSort(sort *Sort) {
+func (p *Params) AddSort(sort *Sort) *Params {
 	p.sorts = append(p.sorts, *sort)
+	return p
 }
 
 // AddOffset sets the offset in Params.
-func (p *Params) AddOffset(offset *Offset) {
+func (p *Params) AddOffset(offset *Offset) *Params {
 	p.offset = offset
+	return p
 }
 
 // AddLimit sets the limit in Params.
-func (p *Params) AddLimit(limit *Limit) {
+func (p *Params) AddLimit(limit *Limit) *Params {
 	p.limit = limit
+	return p
 }
 
 // ToQueryParams converts filters and sorts into url.Values for API call.
