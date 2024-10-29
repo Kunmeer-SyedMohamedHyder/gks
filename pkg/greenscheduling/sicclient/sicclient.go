@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"net/url"
 
-	sicparams "sigs.k8s.io/scheduler-plugins/pkg/greenscheduling/sicclient/params"
-	"sigs.k8s.io/scheduler-plugins/pkg/greenscheduling/sicclient/response"
+	"sigs.k8s.io/scheduler-plugins/pkg/greenscheduling/sicclient/sicparams"
+	"sigs.k8s.io/scheduler-plugins/pkg/greenscheduling/sicclient/sicresponse"
 )
 
 // Config holds the configuration needed to initialize the SIC API client.
@@ -35,7 +35,7 @@ func New(config Config) *Client {
 
 // GetUsageByEntity fetches usage data by entity within the specified time range,
 // applying optional filters, sorting, and pagination.
-func (c *Client) GetUsageByEntity(startTime, endTime string, parameters *sicparams.Params) (*response.UsageByEntityResponse, error) {
+func (c *Client) GetUsageByEntity(startTime, endTime string, parameters *sicparams.Params) (*sicresponse.UsageByEntityResponse, error) {
 	apiURL := fmt.Sprintf("https://%s/sustainability-insight-ctr/v1beta1/usage-by-entity?start-time=%s&end-time=%s",
 		c.hostname, url.QueryEscape(startTime), url.QueryEscape(endTime))
 
@@ -43,7 +43,7 @@ func (c *Client) GetUsageByEntity(startTime, endTime string, parameters *sicpara
 		apiURL = fmt.Sprintf("%s&%s", apiURL, parameters.ToQueryParams().Encode())
 	}
 
-	var usageResponse response.UsageByEntityResponse
+	var usageResponse sicresponse.UsageByEntityResponse
 	if err := c.doGetRequest(apiURL, &usageResponse); err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func (c *Client) GetUsageByEntity(startTime, endTime string, parameters *sicpara
 
 // GetUsageSeries fetches usage data over a time series with specified intervals.
 // It applies optional filters, sorting, and pagination.
-func (c *Client) GetUsageSeries(startTime, endTime, interval string, parameters *sicparams.Params) (*response.UsageSeriesResponse, error) {
+func (c *Client) GetUsageSeries(startTime, endTime, interval string, parameters *sicparams.Params) (*sicresponse.UsageSeriesResponse, error) {
 	apiURL := fmt.Sprintf("https://%s/sustainability-insight-ctr/v1beta1/usage-series?start-time=%s&end-time=%s&interval=%s",
 		c.hostname, url.QueryEscape(startTime), url.QueryEscape(endTime), url.QueryEscape(interval))
 
@@ -60,7 +60,7 @@ func (c *Client) GetUsageSeries(startTime, endTime, interval string, parameters 
 		apiURL = fmt.Sprintf("%s&%s", apiURL, parameters.ToQueryParams().Encode())
 	}
 
-	var usageSeriesResponse response.UsageSeriesResponse
+	var usageSeriesResponse sicresponse.UsageSeriesResponse
 	if err := c.doGetRequest(apiURL, &usageSeriesResponse); err != nil {
 		return nil, err
 	}

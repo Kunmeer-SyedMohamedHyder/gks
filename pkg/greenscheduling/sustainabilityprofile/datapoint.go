@@ -1,4 +1,4 @@
-package sustainabilityscore
+package sustainabilityprofile
 
 import (
 	"math"

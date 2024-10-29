@@ -1,4 +1,4 @@
-package sustainabilityscore
+package sustainabilityprofile
 
 // SustainabilityProfile holds the complete data for sustainability score calculations,
 // including emission data points, total CO₂, and total cost values.
@@ -8,8 +8,8 @@ type SustainabilityProfile struct {
 	TotalCost float64             // Total cost (USD), provided by the user
 }
 
-// NewSustainabilityProfile creates a new instance of SustainabilityProfile .
-func NewSustainabilityProfile(emissions []EmissionDataPoint, totalCo2, totalCost float64) SustainabilityProfile {
+// New creates a new instance of SustainabilityProfile .
+func New(emissions []EmissionDataPoint, totalCo2, totalCost float64) SustainabilityProfile {
 	return SustainabilityProfile{
 		Emissions: emissions,
 		TotalCo2:  totalCo2,

@@ -1,4 +1,4 @@
-package sustainabilityscore
+package sustainabilityprofile
 
 // WeightType represents the different types of weights used in sustainability scoring.
 type WeightType int
