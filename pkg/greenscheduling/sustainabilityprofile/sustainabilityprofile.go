@@ -51,12 +51,12 @@ func (data *SustainabilityProfile) calculateCO2WeightedScore(co2Weight float64, 
 		weightedCO2 += decayFactor * emission.Co2
 	}
 
-	return co2Weight * weightedCO2
+	return co2Weight / (1 + weightedCO2)
 }
 
 // calculateTotalCO2WeightedScore calculates the total CO₂ weighted score based on the total emissions.
 func (data *SustainabilityProfile) calculateTotalCO2WeightedScore(totalCO2Weight float64) float64 {
-	return totalCO2Weight * data.TotalCo2
+	return totalCO2Weight / (1 + data.TotalCo2)
 }
 
 // calculateCostWeightedScore calculates the cost weighted score based on the total cost.
